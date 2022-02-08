@@ -1,40 +1,40 @@
 import React, {useState} from 'react';
 import './App.css';
-import {Todolist} from './Todolist';
+import {TaskType, Todolist} from './Todolist';
+import {v1} from "uuid";
 export type filterType = 'All'| 'Active'|'Completed'
 
 
 function App() {
 
-    // const tasks1 = [
-    //     {id: 1, title: "HTML&CSS", isDone: true},
-    //     {id: 2, title: "JS", isDone: true},
-    //     {id: 3, title: "ReactJS", isDone: false}
-    // ]
-
-
-    const [tasks, setTask] = useState([
-            {id: 1, title: "HTML&CSS", isDone: true},
-            {id: 2, title: "JS", isDone: true},
-            {id: 3, title: "ReactJS", isDone: false}
+    const [tasks, setTasks] = useState<Array<TaskType>>([
+        {id: v1(), title: "HTML&CSS", isDone: true},
+        {id: v1(), title: "JS", isDone: true},
+        {id: v1(), title: "ReactJS", isDone: false},
+        {id: v1(), title: "Rest API", isDone: false},
+        {id: v1(), title: "GraphQL", isDone: false},
         ]
     )
-    const removeTasks = (tasksId: number) => {
-        setTask(tasks.filter(f => f.id !== tasksId))
+    const removeTasks = (tasksId: string) => {
+        setTasks(tasks.filter(f => f.id !== tasksId))
     }
-    const [filter, setFilter] = useState<filterType>('All')
-    let filteredT = tasks
-    if (filter === 'Active') {
-        filteredT = tasks.filter(f => !f.isDone)
-    }
-
-    if (filter === 'Completed') {
-        filteredT = tasks.filter(f => f.isDone)
+    const addTasks = (title: string) => {
+      let newTasks = {id: v1(), title: title, isDone: false}
+        setTasks([newTasks, ...tasks])
     }
 
-    const filterTasks = (filterValue: filterType) => {
-        setFilter(filterValue)
-        console.log(filterValue)
+     const [filter, setFilter] = useState<filterType>('All')
+     let filteredT = tasks
+     if (filter === 'Active') {
+         filteredT = tasks.filter(f => !f.isDone)
+     }
+
+     if (filter === 'Completed') {
+         filteredT = tasks.filter(f => f.isDone)
+   }
+
+     const filterTasks = (filterValue: filterType) => {
+         setFilter(filterValue)
     }
 
     return (
@@ -44,6 +44,7 @@ function App() {
                 tasks={filteredT}
                 removeTasks={removeTasks}
                 filterTasks={filterTasks}
+                addTasks={addTasks}
             />
         </div>
     );
