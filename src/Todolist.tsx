@@ -60,7 +60,7 @@ export function Todolist(props: PropsType) {
             })}
         </ul>
         <div>
-            <button onClick={oneClickAllHandler}>All</button>
+            <button onClick={oneClickAllHandler}>Al</button>
             <button onClick={oneClickActiveHandler}>Active</button>
             <button onClick={oneClickCompletedHandler}>Completed</button>
         </div>
