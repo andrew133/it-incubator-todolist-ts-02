@@ -33,15 +33,10 @@ export function Todolist(props: PropsType) {
         }
     }
 
-    const oneClickAllHandler = () => {
-        props.filterTasks('All')
+    const oneClickFilterHandler = (value:filterType) => {
+        props.filterTasks(value)
     }
-    const oneClickActiveHandler = () => {
-        props.filterTasks('Active')
-    }
-    const oneClickCompletedHandler = () => {
-        props.filterTasks('Completed')
-    }
+
     return <div>
         <h3>{props.title}</h3>
         <div>
@@ -60,9 +55,9 @@ export function Todolist(props: PropsType) {
             })}
         </ul>
         <div>
-            <button onClick={oneClickAllHandler}>Al</button>
-            <button onClick={oneClickActiveHandler}>Active</button>
-            <button onClick={oneClickCompletedHandler}>Completed</button>
+            <button onClick={()=>oneClickFilterHandler('All')}>All</button>
+            <button onClick={()=>oneClickFilterHandler('Active')}>Active</button>
+            <button onClick={()=>oneClickFilterHandler('Completed')}>Completed</button>
         </div>
     </div>
 }
