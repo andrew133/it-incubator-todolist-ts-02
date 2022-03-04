@@ -36,6 +36,9 @@ function App() {
      const filterTasks = (filterValue: filterType) => {
          setFilter(filterValue)
     }
+     const changeStatus = () => {
+         console.log("changeStatus")
+     }
 
     return (
         <div className="App">
@@ -45,6 +48,7 @@ function App() {
                 removeTasks={removeTasks}
                 filterTasks={filterTasks}
                 addTasks={addTasks}
+                changeStatus={changeStatus}
             />
         </div>
     );
