@@ -36,7 +36,7 @@ function App() {
      const filterTasks = (filterValue: filterType) => {
          setFilter(filterValue)
     }
-     const changeStatus = () => {
+     const changeStatus = (tasksId:string, checked: boolean) => {
          console.log("changeStatus")
      }
 
