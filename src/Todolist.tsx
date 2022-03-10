@@ -2,6 +2,7 @@ import React, {ChangeEvent, KeyboardEvent, useState} from 'react';
 import {filterType} from "./App";
 
 
+
 export type TaskType = {
     id: string
     title: string
@@ -14,7 +15,7 @@ export type TaskType = {
     removeTasks: (tasksId: string)=> void
     filterTasks: (filterValue: filterType)=> void
      addTasks:(title: string)=> void
-     changeStatus:(ksId:string, checked:boolean)=> void
+
 }
 
 
@@ -40,9 +41,7 @@ export function Todolist(props: PropsType) {
     const removeTasksHandler =(mid: string)=>{
         props.removeTasks(mid)
     }
-    const changeStatusHandler = (event: ChangeEvent<HTMLInputElement>)=>{
-        props.changeStatus(m.id, event.currentTarget.checked)
-    }
+
 
     return <div>
         <h3>{props.title}</h3>
@@ -55,7 +54,7 @@ export function Todolist(props: PropsType) {
                 return (
                     <li key={m.id}>
                         <button onClick={()=>removeTasksHandler(m.id)}>x</button>
-                        <input type="checkboxs" checked={m.isDone} onChange={changeStatusHandler}/>
+                        <input type="checkboxs" checked={m.isDone} />
                         <span>{m.title}</span>
                     </li>
                 )
