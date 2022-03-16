@@ -11,7 +11,7 @@ function App() {
         {id: v1(), title: "HTML&CSS", isDone: true},
         {id: v1(), title: "JS", isDone: true},
         {id: v1(), title: "ReactJS", isDone: false},
-        {id: v1(), title: "Rest AP", isDone: false},
+        {id: v1(), title: "Rest APi", isDone: false},
         {id: v1(), title: "GraphQL", isDone: false},
         ]
     )
